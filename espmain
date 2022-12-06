@@ -1,3 +1,4 @@
+-- brr
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
@@ -81,7 +82,7 @@ local ESPLoop; ESPLoop = game:GetService("RunService").RenderStepped:Connect(fun
             Drawing.Visible = false
         end
 
-        local Character = Player.Character
+        local Character = workspace[tostring(Player)]
         local RootPart, Humanoid = Character and Character:FindFirstChild("HumanoidRootPart"), Character and Character:FindFirstChildOfClass("Humanoid")
         if not Character or not RootPart or not Humanoid then continue end
 
@@ -204,7 +205,7 @@ local ESPLoop; ESPLoop = game:GetService("RunService").RenderStepped:Connect(fun
             Name.Visible = true
 
             local BottomOffset = BoxSize.Y + BoxPos.Y + 1
-            local Equipped = Player.Character:FindFirstChildOfClass("Tool") and Player.Character:FindFirstChildOfClass("Tool").Name or "None"
+            local Equipped = workspace[tostring(Player)]:FindFirstChildOfClass("Tool") and workspace[tostring(Player)]:FindFirstChildOfClass("Tool").Name or "None"
             Equipped = SurroundString(Equipped, "[]")
             Tool.Text = Equipped
             Tool.Position = Vector2.new(BoxSize.X/2 + BoxPos.X, BottomOffset)
